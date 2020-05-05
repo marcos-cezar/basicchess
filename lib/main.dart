@@ -66,4 +66,11 @@ class _AppContainerState extends State<AppStateContainer> {
       child: widget.child,
     );
   }
+
+  @override
+  void dispose() {
+    this.widget.chessBloc.destroy();
+  }
+
+
 }
