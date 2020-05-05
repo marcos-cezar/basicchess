@@ -3,13 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
+
 class StudiesPage extends StatelessWidget {
   static const STUDIES_PAGE_ROUTE_NAME = "/studies";
 
-  ChessBoardController chessBoardController = ChessBoardController();
-  List<String> moves = [];
-  String currentGamePgn = "";
-  int currentTurn = 0;
+  ChessBoardController _chessBoardController = ChessBoardController();
+  List<String> _moves = [];
+  String _currentGamePgn = "";
+  int _currentTurn = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +25,16 @@ class StudiesPage extends StatelessWidget {
               child: ChessBoard(
                 size: MediaQuery.of(context).size.width,
                 onMove: (move) {
-                  moves.add(move);
-                  currentTurn = moves.length - 1;
-                  currentGamePgn = chessBoardController.game.pgn({});
-                  print(currentGamePgn);
+                  _moves.add(move);
+                  _currentTurn = _moves.length - 1;
+                  _currentGamePgn = _chessBoardController.game.pgn({});
+                  print(_currentGamePgn);
                 },
                 onDraw: () {},
                 onCheckMate: (winner) {
                   print(winner);
                 },
-                chessBoardController: chessBoardController,
+                chessBoardController: _chessBoardController,
                 enableUserMoves: true,
               ),
             ),
@@ -45,10 +46,10 @@ class StudiesPage extends StatelessWidget {
                   textColor: Colors.white,
                   color: Colors.green,
                   onPressed: () {
-                    if (currentTurn < moves.length - 1) {
-                      currentTurn++;
-                      chessBoardController.game.move(moves[currentTurn]);
-                      chessBoardController.loadPGN(chessBoardController.game.pgn({}));
+                    if (_currentTurn < _moves.length - 1) {
+                      _currentTurn++;
+                      _chessBoardController.game.move(_moves[_currentTurn]);
+                      _chessBoardController.loadPGN(_chessBoardController.game.pgn({}));
                     }
                   },
                 ),
@@ -57,10 +58,10 @@ class StudiesPage extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.green,
                     onPressed: () {
-                      if (currentTurn > -1) {
-                        currentTurn--;
-                        chessBoardController.game.undo_move();
-                        chessBoardController.loadPGN(chessBoardController.game.pgn({}));
+                      if (_currentTurn > -1) {
+                        _currentTurn--;
+                        _chessBoardController.game.undo_move();
+                        _chessBoardController.loadPGN(_chessBoardController.game.pgn({}));
                       }
 
                     }),
@@ -69,9 +70,9 @@ class StudiesPage extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.green,
                     onPressed: () {
-                      currentTurn = 0;
-                      moves.clear();
-                      chessBoardController.resetBoard();
+                      _currentTurn = 0;
+                      _moves.clear();
+                      _chessBoardController.resetBoard();
                     }),
               ],
             )

@@ -3,15 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppBaseSkeleton extends StatelessWidget {
 
-  String title;
-  Widget child;
+  final String title;
+  final Widget child;
 
-  AppBaseSkeleton({this.title, this.child});
+  const AppBaseSkeleton({this.title, this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
         title: Text(
           this.title,
           style: GoogleFonts.playfairDisplay(
