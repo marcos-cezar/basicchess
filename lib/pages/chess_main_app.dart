@@ -1,6 +1,8 @@
 import 'package:chessmindexpander/bloc/chess_bloc.dart';
 import 'package:chessmindexpander/models/menu_item.dart';
-import 'package:chessmindexpander/pages/pieces_page.dart';
+import 'package:chessmindexpander/pages/basic_rules_page.dart';
+import 'package:chessmindexpander/pages/openings_page.dart';
+import 'package:chessmindexpander/pages/studies_page.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:chessmindexpander/widgets/main_menu_item.dart';
 import 'package:chessmindexpander/widgets/menu_list.dart';
@@ -30,23 +32,21 @@ class _MainChessAppState extends State<MainChessApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               MenuList(menuItems: [
-                MenuItem(
-                    "Peças",
-                    "Aprenda quais são as peças do jogo de Xadrez",
+                MenuItem("Regras iniciais", "Aprenda o básico sobre o jogo",
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
-                      context, PiecesPage.PIECES_PAGE_ROUTE_NAME);
+                      context, BasicRulesPage.PIECES_PAGE_ROUTE_NAME);
                 }),
-                MenuItem(
-                    "Aberturas",
-                    "Memorize as aberturas mais famosas",
+                MenuItem("Aberturas", "Memorize as aberturas mais famosas",
                     FontAwesomeIcons.bookReader, () {
-                  print("Chame a tela de abertura");
+                  Navigator.pushNamed(
+                      context, OpeningsPage.OPENING_PAGE_ROUTE_NAME);
                 }),
                 MenuItem("Estudos", "Estude uma partida ou uma posição",
                     FontAwesomeIcons.brain, () {
-                      print("Chame a tela de estudo");
-                    })
+                  Navigator.pushNamed(
+                      context, StudiesPage.STUDIES_PAGE_ROUTE_NAME);
+                })
               ])
             ],
           ),

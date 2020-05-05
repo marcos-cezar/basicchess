@@ -1,5 +1,5 @@
 import 'package:chessmindexpander/models/menu_item.dart';
-import 'package:chessmindexpander/pages/pieces_page.dart';
+import 'package:chessmindexpander/pages/basic_rules_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -27,9 +27,10 @@ class MenuList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView(
+        padding: EdgeInsets.only(top: 10, bottom: 10),
         physics: this.menuItems.length >= 3
-            ? NeverScrollableScrollPhysics()
-            : AlwaysScrollableScrollPhysics(),
+            ? AlwaysScrollableScrollPhysics()
+            : NeverScrollableScrollPhysics(),
         children: createItems(),
       ),
     );
