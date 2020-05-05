@@ -7,8 +7,14 @@ import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
-class StudiesPage extends StatelessWidget {
+class StudiesPage extends StatefulWidget {
   static const STUDIES_PAGE_ROUTE_NAME = "/studies";
+
+  @override
+  _StudiesPageState createState() => _StudiesPageState();
+}
+
+class _StudiesPageState extends State<StudiesPage> {
 
   final ChessBoardController _chessBoardController = ChessBoardController();
   ChessGameBloc gameBloc;
@@ -21,7 +27,6 @@ class StudiesPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             SizedBox(
               child: ChessBoard(
@@ -69,24 +74,6 @@ class StudiesPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                RaisedButton(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(Icons.forward),
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.indigo)),
-                  color: Colors.indigo,
-                  onPressed: () {
-                    if (gameBloc.currentTurn < gameBloc.moves.length - 1) {
-                      gameBloc.currentTurn++;
-                      _chessBoardController.game
-                          .move(gameBloc.moves[gameBloc.currentTurn]);
-                      _chessBoardController
-                          .loadPGN(_chessBoardController.game.pgn({}));
-                    }
-                  },
-                ),
                 RaisedButton(
                     padding: EdgeInsets.all(10),
                     shape: RoundedRectangleBorder(
