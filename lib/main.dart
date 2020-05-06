@@ -1,4 +1,5 @@
 import 'package:chessmindexpander/bloc/chess_bloc.dart';
+import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/pages/chess_main_app.dart';
 import 'package:chessmindexpander/pages/basic_rules_page.dart';
 import 'package:chessmindexpander/pages/openings_page.dart';
@@ -37,6 +38,10 @@ void main() {
         StudiesPage.STUDIES_PAGE_ROUTE_NAME : (context) => AppStateContainer(
           chessBloc: ChessGameBloc(),
           child: StudiesPage(),
+        ),
+        BoardDetailPage.BOARD_PAGE_ROUTE_NAME : (context) => AppStateContainer(
+          chessBloc: ChessGameBloc(),
+          child: BoardDetailPage(),
         )
       },
     ));

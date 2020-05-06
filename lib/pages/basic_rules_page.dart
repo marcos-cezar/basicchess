@@ -1,8 +1,11 @@
 import 'package:chessmindexpander/models/menu_item.dart';
+import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:chessmindexpander/widgets/menu_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'initial_position_page.dart';
 
 class BasicRulesPage extends StatelessWidget {
   static const String PIECES_PAGE_ROUTE_NAME = "/basicRules";
@@ -16,11 +19,13 @@ class BasicRulesPage extends StatelessWidget {
           MenuList(menuItems: [
             MenuItem("Tabuleiro", "Conheça o cenário onde a partida acontece. $knownMore",
                 FontAwesomeIcons.chessBoard, () {
-                  print("clicou no tabuleiro");
+                  Navigator.pushNamed(context, BoardDetailPage.BOARD_PAGE_ROUTE_NAME);
                 }),
             MenuItem("Posição inicial", "Aprenda qual a disposição inicial das peças. $knownMore",
                 FontAwesomeIcons.chess, () {
-                  print("clicou no cavalo");
+                  Navigator
+                      .pushNamed(context, InitialPositionPage
+                      .INITIAL_POSITION_PAGE_ROUTE_NAME);
                 }),
 
             MenuItem("Bispo", "Bispo move-se para as diagonais. $knownMore",

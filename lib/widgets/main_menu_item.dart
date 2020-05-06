@@ -22,7 +22,7 @@ class MainMenuItem extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8),
             child: ListTile(
-              leading: _icon,
+              leading: SizedBox(child: _icon),
               title: Text(
                 _itemLabel,
                 style: GoogleFonts.playfairDisplay(

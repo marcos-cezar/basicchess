@@ -4,16 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 class AppBaseSkeleton extends StatelessWidget {
 
   final String title;
+  final Color backgroundColor;
   final Widget child;
 
-  const AppBaseSkeleton({this.title, this.child});
+  const AppBaseSkeleton(
+      {this.title, this.backgroundColor = Colors.white, this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.white
+            color: Colors.white
         ),
         title: Text(
           this.title,
@@ -24,6 +26,7 @@ class AppBaseSkeleton extends StatelessWidget {
       body: SafeArea(
         child: this.child,
       ),
+      backgroundColor: this.backgroundColor,
     );
   }
 }
