@@ -26,6 +26,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   google_fonts: ^1.0.0
   flutter_chess_board: ^0.9.4
+  chess_vectors_flutter: ^1.0.12
 
 dev_dependencies:
   flutter_test:
