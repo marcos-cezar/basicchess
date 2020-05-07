@@ -15,7 +15,7 @@ class BoardDetailPage extends StatelessWidget {
           children: <Widget>[
             Text(
               "O campo de batalha se divide em um quadrado dividido em 64 casas, pintadas alternadamente entre escuras e claras. Assim como o diagrama abaixo.",
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
               style: TextStyle(fontSize: 14),
             ),
             FaIcon(
@@ -25,7 +25,7 @@ class BoardDetailPage extends StatelessWidget {
             ),
             Text(
               "A posição correta do tabuleiro é aquela onde os jogadores tenham a sua direita o último quadrado branco.",
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
               style: TextStyle(fontSize: 14),
             ),
           ],

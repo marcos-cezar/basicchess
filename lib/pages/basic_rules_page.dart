@@ -1,6 +1,7 @@
 import 'package:chessmindexpander/models/menu_item.dart';
 import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/pages/piece_detail_page.dart';
+import 'package:chessmindexpander/utils/chess_descriptions.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:chessmindexpander/widgets/menu_list.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ import 'initial_position_page.dart';
 
 class BasicRulesPage extends StatelessWidget {
   static const String PIECES_PAGE_ROUTE_NAME = "/basicRules";
+
+  ChessDescriptions chessDescriptions = ChessDescriptions();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Bispo",
-                          description: "Bispo peça que anda nas diagonais do tabuleiro.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.Bishop.toString()],
                           startSinglePiecePos: "e4",
                           pieceType: PieceType.Bishop));
                 }),
@@ -45,7 +48,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Torre",
-                          description: "Torre se movimenta na horizontal e vertical.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.Rook.toString()],
                           startSinglePiecePos: "e4",
                           pieceType: PieceType.Rook));
                 }),
@@ -55,7 +58,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Dama",
-                          description: "O movimento da Dama é a junção do movimento da torre e do bispo.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.Queen.toString()],
                           startSinglePiecePos: "e4",
                           pieceType: PieceType.Queen));
                 }),
@@ -66,7 +69,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Rei",
-                          description: "Rei possui o movimento igual ao da Dama porém somente podendo andar uma casa. O Rei é a peça mais importante e pode levar cheque mate.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.King.toString()],
                           startSinglePiecePos: "e4",
                           pieceType: PieceType.King));
                 }),
@@ -76,7 +79,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Peão",
-                          description: "Peão se move somente para frente e pode ser promovido ao chegar ao extremo do tabuleiro. No primeiro movimento pode andar duas casa.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.Pawn.toString()],
                           startSinglePiecePos: "e2",
                           pieceType: PieceType.Pawn));
                 }),
@@ -86,7 +89,7 @@ class BasicRulesPage extends StatelessWidget {
                   Navigator.pushNamed(context,
                       PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
                       arguments: PieceDetailArguments(name: "Cavalo",
-                          description: "Cavalo se movimenta em formato de L.",
+                          description: chessDescriptions.pieceDescriptions[PieceType.Knight.toString()],
                           startSinglePiecePos: "e4",
                           pieceType: PieceType.Knight));
                 }),

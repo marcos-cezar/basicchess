@@ -33,7 +33,7 @@ class InitialPositionPage extends StatelessWidget {
             Text(
               "Ao se iniciar uma partida as peças devem ocupar a posição abaixo. As 16 peças ocupam de cada lado as primeiras linhas horizontais de cada lado. Os peões ocupam a segunda horizontal, as torres nos cantos, os cavalos junto às torres e os Bispos juntos aos cavalos. A dama branca ocupa a casa branca, a dama preta a casa preta. Os reis situam-se ao lado das respectivas damas.",
               style: TextStyle(fontSize: 14),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
             ),
             Padding(padding: EdgeInsets.only(top: 10, bottom: 10),),
             _chessEntitySet.chessboard,

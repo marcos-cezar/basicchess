@@ -12,7 +12,6 @@ class OpeningArguments {
 }
 
 class OpeningDetailsPage extends StatefulWidget {
-
   static const OPENING_DETAIL_PAGE_ROUTE_NAME = "/openingDetails";
 
   @override
@@ -20,7 +19,6 @@ class OpeningDetailsPage extends StatefulWidget {
 }
 
 class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
-
   OpeningArguments _openingArguments;
   ChessEntitySet _chessEntitySet;
 
@@ -44,8 +42,7 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       //TODO configure start position on the board
-      _chessEntitySet.chessControllers
-          .loadPGN(_openingArguments.startPgnPos);
+      _chessEntitySet.chessControllers.loadPGN(_openingArguments.startPgnPos);
     });
 
     return AppBaseSkeleton(
@@ -54,7 +51,10 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
         padding: EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
-            Text(_openingArguments.description),
+            Text(
+              _openingArguments.description,
+              textAlign: TextAlign.justify,
+            ),
             SizedBox(
               height: 10,
             ),

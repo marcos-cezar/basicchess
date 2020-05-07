@@ -26,7 +26,7 @@ class _StudiesPageState extends State<StudiesPage> {
       title: "Estudos",
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             SizedBox(
               child: ChessBoard(
