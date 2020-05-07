@@ -2,7 +2,10 @@ import 'package:chessmindexpander/bloc/chess_bloc.dart';
 import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/pages/chess_main_app.dart';
 import 'package:chessmindexpander/pages/basic_rules_page.dart';
+import 'package:chessmindexpander/pages/initial_position_page.dart';
+import 'package:chessmindexpander/pages/opening_details_page.dart';
 import 'package:chessmindexpander/pages/openings_page.dart';
+import 'package:chessmindexpander/pages/piece_detail_page.dart';
 import 'package:chessmindexpander/pages/studies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,22 +30,37 @@ void main() {
               chessBloc: ChessGameBloc(),
               child: MainChessApp(),
             ),
-        BasicRulesPage.PIECES_PAGE_ROUTE_NAME : (context) => AppStateContainer(
+        BasicRulesPage.PIECES_PAGE_ROUTE_NAME: (context) => AppStateContainer(
               chessBloc: ChessGameBloc(),
               child: BasicRulesPage(),
             ),
-        OpeningsPage.OPENING_PAGE_ROUTE_NAME : (context) => AppStateContainer(
-          chessBloc: ChessGameBloc(),
-          child: OpeningsPage(),
-        ),
-        StudiesPage.STUDIES_PAGE_ROUTE_NAME : (context) => AppStateContainer(
-          chessBloc: ChessGameBloc(),
-          child: StudiesPage(),
-        ),
-        BoardDetailPage.BOARD_PAGE_ROUTE_NAME : (context) => AppStateContainer(
-          chessBloc: ChessGameBloc(),
-          child: BoardDetailPage(),
-        )
+        OpeningsPage.OPENING_PAGE_ROUTE_NAME: (context) => AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: OpeningsPage(),
+            ),
+        StudiesPage.STUDIES_PAGE_ROUTE_NAME: (context) => AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: StudiesPage(),
+            ),
+        BoardDetailPage.BOARD_PAGE_ROUTE_NAME: (context) => AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: BoardDetailPage(),
+            ),
+        InitialPositionPage.INITIAL_POSITION_PAGE_ROUTE_NAME: (context) =>
+            AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: InitialPositionPage(),
+            ),
+        PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME: (context) =>
+            AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: PieceDetailPage(),
+            ),
+        OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME: (context) =>
+            AppStateContainer(
+              chessBloc: ChessGameBloc(),
+              child: OpeningDetailsPage(),
+            )
       },
     ));
   });
@@ -77,6 +95,4 @@ class _AppContainerState extends State<AppStateContainer> {
     super.dispose();
     this.widget.chessBloc.destroy();
   }
-
-
 }

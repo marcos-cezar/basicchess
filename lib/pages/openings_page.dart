@@ -5,6 +5,8 @@ import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
+import 'opening_details_page.dart';
+
 class OpeningsPage extends StatefulWidget {
   static const OPENING_PAGE_ROUTE_NAME = "/openings";
 
@@ -19,7 +21,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
   ChessGameBloc chessGameBloc;
 
   void createOpeningChessBoards() {
-    chessGameBloc.chessOpeningsPgn.forEach((key, value) {
+    chessGameBloc.chessOpenings.forEach((key, value) {
       ChessBoardController chessBoardController = ChessBoardController();
       ChessBoard currentChessBoard = ChessBoard(
           size: 120,
@@ -47,7 +49,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       openingEntries.forEach((key, value) {
-        value.chessControllers.loadPGN(chessGameBloc.chessOpeningsPgn[key]);
+        value.chessControllers.loadPGN(chessGameBloc.chessOpenings[key].startPgnPos);
       });
     });
 
@@ -56,17 +58,26 @@ class _OpeningsPageState extends State<OpeningsPage> {
 
       openingEntries.forEach((key, value) {
         final Widget currentCardItem = SizedBox(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                children: <Widget>[
-                  value.chessboard,
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                  ),
-                  Text(key)
-                ],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME, 
+                  arguments: OpeningArguments.name(key,
+                      chessGameBloc.chessOpenings[key].startPgnPos,
+                      chessGameBloc.chessOpenings[key].description));
+            },
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Row(
+                  children: <Widget>[
+                    value.chessboard,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                    ),
+                    Text(key)
+                  ],
+                ),
               ),
             ),
           ),
