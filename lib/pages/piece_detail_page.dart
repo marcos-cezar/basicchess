@@ -1,3 +1,5 @@
+import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
+import 'package:chess_vectors_flutter/vector_image.dart';
 import 'package:chessmindexpander/models/chess_entity_set.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +10,14 @@ class PieceDetailArguments {
   final String description;
   final String startSinglePiecePos;
   final PieceType pieceType;
+  final VectorBase pieceIcon;
 
   PieceDetailArguments(
-      {this.name, this.description, this.startSinglePiecePos, this.pieceType});
+      {this.name,
+      this.description,
+      this.startSinglePiecePos,
+      this.pieceType,
+      this.pieceIcon});
 }
 
 class PieceDetailPage extends StatefulWidget {
@@ -55,14 +62,32 @@ class _PieceDetailPageState extends State<PieceDetailPage> {
         padding: EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
-            Text(
-              pieceDetailArguments.description,
-              textAlign: TextAlign.justify,
-            ),
+            _chessEntitySet.chessboard,
             SizedBox(
               height: 10,
             ),
-            _chessEntitySet.chessboard
+            Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    side: BorderSide(color: Colors.blueGrey)
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        child: Center(
+                          child: pieceDetailArguments.pieceIcon,
+                        ),
+                      ),
+                      Text(
+                        pieceDetailArguments.description,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),

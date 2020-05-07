@@ -16,6 +16,7 @@ class MenuList extends StatelessWidget {
             FaIcon(
               element.iconData,
               size: 32.0,
+              color: Colors.black54,
             ),
             element.title,
             element.subtitle,
