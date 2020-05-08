@@ -51,14 +51,23 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
         padding: EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
-            Text(
-              _openingArguments.description,
-              textAlign: TextAlign.justify,
-            ),
+            _chessEntitySet.chessboard,
             SizedBox(
               height: 10,
             ),
-            _chessEntitySet.chessboard
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  side: BorderSide(color: Colors.blueGrey)
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  _openingArguments.description,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ),
           ],
         ),
       ),

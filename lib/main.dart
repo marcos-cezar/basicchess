@@ -18,9 +18,9 @@ void main() {
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.green[400],
-          primaryColorLight: Colors.lightGreen[300],
-          primaryColorDark: Colors.green[600],
+          primaryColor: Colors.lightGreen[400],
+          primaryColorLight: Colors.lightGreen[200],
+          primaryColorDark: Colors.lightGreen[800],
           fontFamily: GoogleFonts.playfairDisplay(fontStyle: FontStyle.normal)
               .fontFamily,
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.white))),
