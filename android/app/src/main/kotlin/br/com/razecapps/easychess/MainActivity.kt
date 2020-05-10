@@ -1,4 +1,4 @@
-package com.example.chessmindexpander
+package br.com.razecapps.easychess
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
