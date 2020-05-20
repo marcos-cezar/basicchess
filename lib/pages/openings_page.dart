@@ -49,7 +49,8 @@ class _OpeningsPageState extends State<OpeningsPage> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       openingEntries.forEach((key, value) {
-        value.chessControllers.loadPGN(chessGameBloc.chessOpenings[key].startPgnPos);
+        value.chessControllers
+            .loadPGN(chessGameBloc.chessOpenings[key].startPgnPos);
       });
     });
 
@@ -60,9 +61,10 @@ class _OpeningsPageState extends State<OpeningsPage> {
         final Widget currentCardItem = SizedBox(
           child: GestureDetector(
             onTap: () {
-              Navigator.of(context)
-                  .pushNamed(OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME, 
-                  arguments: OpeningArguments.name(key,
+              Navigator.of(context).pushNamed(
+                  OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME,
+                  arguments: OpeningArguments.name(
+                      key,
                       chessGameBloc.chessOpenings[key].startPgnPos,
                       chessGameBloc.chessOpenings[key].description));
             },
@@ -71,7 +73,14 @@ class _OpeningsPageState extends State<OpeningsPage> {
                 padding: EdgeInsets.all(8),
                 child: Row(
                   children: <Widget>[
-                    value.chessboard,
+                    Hero(
+                      tag: "chess_opening_$key",
+                      child: SizedBox(
+                        width: 120,
+                        height: 120,
+                        child: value.chessboard,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(left: 10),
                     ),

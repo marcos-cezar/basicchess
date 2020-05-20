@@ -25,7 +25,7 @@ class _MainChessAppState extends State<MainChessApp> {
   Widget build(BuildContext context) {
     holder = AppStateContainer.of(context);
     return AppBaseSkeleton(
-        title: "Xadrez Fácil",
+        title: "Xadrez Facilitado",
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

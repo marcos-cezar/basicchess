@@ -51,15 +51,19 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
         padding: EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
-            _chessEntitySet.chessboard,
+            Hero(
+              child: SizedBox(
+                child: _chessEntitySet.chessboard,
+              ),
+              tag: "chess_opening_${_openingArguments.name}",
+            ),
             SizedBox(
               height: 10,
             ),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(color: Colors.blueGrey)
-              ),
+                  side: BorderSide(color: Colors.blueGrey)),
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Text(
