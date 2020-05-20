@@ -3,13 +3,19 @@ import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
-class InitialPositionPage extends StatelessWidget {
+class InitialPositionPage extends StatefulWidget {
   static const INITIAL_POSITION_PAGE_ROUTE_NAME = "/initialPosition";
 
+  @override
+  _InitialPositionPageState createState() => _InitialPositionPageState();
+}
+
+class _InitialPositionPageState extends State<InitialPositionPage> {
   ChessEntitySet _chessEntitySet;
 
+
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
     if (_chessEntitySet == null) {
       ChessBoardController chessBoardController = ChessBoardController();
       _chessEntitySet = ChessEntitySet(
@@ -23,6 +29,10 @@ class InitialPositionPage extends StatelessWidget {
           ),
           chessBoardController);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return AppBaseSkeleton(
       title: "Posição inicial",

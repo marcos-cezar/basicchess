@@ -31,10 +31,9 @@ class _PieceDetailPageState extends State<PieceDetailPage> {
   PieceDetailArguments pieceDetailArguments;
   ChessEntitySet _chessEntitySet;
 
-  @override
-  Widget build(BuildContext context) {
-    pieceDetailArguments = ModalRoute.of(context).settings.arguments;
 
+  @override
+  void didChangeDependencies() {
     if (_chessEntitySet == null) {
       ChessBoardController chessBoardController = ChessBoardController();
       _chessEntitySet = ChessEntitySet(
@@ -48,6 +47,11 @@ class _PieceDetailPageState extends State<PieceDetailPage> {
           ),
           chessBoardController);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    pieceDetailArguments = ModalRoute.of(context).settings.arguments;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       //TODO configure start position on the board

@@ -22,10 +22,9 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
   OpeningArguments _openingArguments;
   ChessEntitySet _chessEntitySet;
 
-  @override
-  Widget build(BuildContext context) {
-    _openingArguments = ModalRoute.of(context).settings.arguments;
 
+  @override
+  void didChangeDependencies() {
     if (_chessEntitySet == null) {
       ChessBoardController chessBoardController = ChessBoardController();
       _chessEntitySet = ChessEntitySet(
@@ -39,6 +38,11 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
           ),
           chessBoardController);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _openingArguments = ModalRoute.of(context).settings.arguments;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       //TODO configure start position on the board
@@ -51,11 +55,11 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
         padding: EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
-            Hero(
-              child: SizedBox(
+            SizedBox(
+              child: Hero(
+                tag: "chess_opening_${_openingArguments.name}",
                 child: _chessEntitySet.chessboard,
               ),
-              tag: "chess_opening_${_openingArguments.name}",
             ),
             SizedBox(
               height: 10,

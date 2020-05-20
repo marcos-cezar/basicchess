@@ -73,11 +73,11 @@ class _OpeningsPageState extends State<OpeningsPage> {
                 padding: EdgeInsets.all(8),
                 child: Row(
                   children: <Widget>[
-                    Hero(
-                      tag: "chess_opening_$key",
-                      child: SizedBox(
-                        width: 120,
-                        height: 120,
+                    SizedBox(
+                      width: 120,
+                      height: 120,
+                      child: Hero(
+                        tag: "chess_opening_$key",
                         child: value.chessboard,
                       ),
                     ),
