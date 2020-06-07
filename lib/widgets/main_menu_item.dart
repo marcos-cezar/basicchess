@@ -3,11 +3,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainMenuItem extends StatelessWidget {
-  FaIcon _icon;
-  String _itemLabel;
-  String _itemDescription;
+  final FaIcon _icon;
+  final String _itemLabel;
+  final String _itemDescription;
 
-  Function _onClickCallback;
+  final Function _onClickCallback;
 
   MainMenuItem(this._icon, this._itemLabel, this._itemDescription,
       this._onClickCallback);
@@ -15,6 +15,11 @@ class MainMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: Colors.white70,
+          ),
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +27,10 @@ class MainMenuItem extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8),
             child: ListTile(
-              leading: SizedBox(child: _icon),
+              trailing: Icon(Icons.arrow_forward_ios),
+              leading: Container(
+                child: SizedBox(child: _icon),
+              ),
               title: Text(
                 _itemLabel,
                 style: GoogleFonts.playfairDisplay(
