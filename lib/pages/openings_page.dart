@@ -15,9 +15,10 @@ class OpeningsPage extends StatefulWidget {
 }
 
 class _OpeningsPageState extends State<OpeningsPage> {
+
   ChessEntitySet chessEntitySet;
 
-  Map<String, ChessEntitySet> openingEntries = Map<String, ChessEntitySet>();
+  final Map<String, ChessEntitySet> openingEntries = Map<String, ChessEntitySet>();
   ChessGameBloc chessGameBloc;
 
   void createOpeningChessBoards() {
@@ -55,7 +56,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
     });
 
     List<Widget> createOpeningItems() {
-      List<Widget> resultOpenings = [];
+      final List<Widget> resultOpenings = [];
 
       openingEntries.forEach((key, value) {
         final Widget currentCardItem = SizedBox(
