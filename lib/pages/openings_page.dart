@@ -26,12 +26,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
       ChessBoardController chessBoardController = ChessBoardController();
       ChessBoard currentChessBoard = ChessBoard(
           size: 120,
-          enableUserMoves: false,
-          onMove: (move) {},
-          onDraw: () {},
-          onCheckMate: (winnerColor) {},
-          chessBoardController: chessBoardController,
-          boardType: BoardType.brown);
+          enableUserMoves: false);
 
       openingEntries.putIfAbsent(key, () {
         return ChessEntitySet(currentChessBoard, chessBoardController);

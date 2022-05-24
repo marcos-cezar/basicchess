@@ -144,18 +144,12 @@ class _StudiesPageState extends State<StudiesPage> {
   Widget _buildChessBoard() {
     return ChessBoard(
       size: MediaQuery.of(context).size.width,
-      onMove: (move) {
-        gameBloc.moves.add(move);
+      onMove: () {
+        //gameBloc.moves.add(move);
         gameBloc.currentTurn = gameBloc.moves.length - 1;
         gameBloc.updateCurrentGame(_chessBoardController.game.pgn({}));
         print(gameBloc.currentTurn);
       },
-      onDraw: () {},
-      onCheckMate: (winner) {
-        print(winner);
-      },
-      chessBoardController: _chessBoardController,
-      whiteSideTowardsUser: isToFlipBoard,
       enableUserMoves: true,
     );
   }

@@ -23,7 +23,7 @@ void main() {
           primaryColorDark: Colors.lightGreen[800],
           fontFamily: GoogleFonts.playfairDisplay(fontStyle: FontStyle.normal)
               .fontFamily,
-          primaryTextTheme: TextTheme(title: TextStyle(color: Colors.white))),
+          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white))),
       initialRoute: "/",
       routes: {
         "/": (context) => AppStateContainer(

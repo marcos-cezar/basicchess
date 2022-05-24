@@ -1,8 +1,7 @@
 
-
 import 'package:flutter/material.dart';
 
-class MenuItem {
+class ChessMenuItem {
 
   String title;
   String subtitle;
@@ -10,6 +9,6 @@ class MenuItem {
 
   Function action;
 
-  MenuItem(this.title, this.subtitle, this.iconData, this.action);
+  ChessMenuItem(this.title, this.subtitle, this.iconData, this.action);
 
 }

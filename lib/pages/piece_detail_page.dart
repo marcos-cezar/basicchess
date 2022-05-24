@@ -39,10 +39,6 @@ class _PieceDetailPageState extends State<PieceDetailPage> {
       _chessEntitySet = ChessEntitySet(
           ChessBoard(
             size: MediaQuery.of(context).size.width - 16,
-            onMove: (move) {},
-            onCheckMate: (winnerColor) {},
-            onDraw: () {},
-            chessBoardController: chessBoardController,
             enableUserMoves: true,
           ),
           chessBoardController);
@@ -56,8 +52,8 @@ class _PieceDetailPageState extends State<PieceDetailPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       //TODO configure start position on the board
       _chessEntitySet.chessControllers.clearBoard();
-      _chessEntitySet.chessControllers
-          .putPiece(pieceDetailArguments.pieceType, "e4", PieceColor.White);
+      //_chessEntitySet.chessControllers
+        //  .putPiece(pieceDetailArguments.pieceType, "e4", PieceColor.White);
     });
 
     return AppBaseSkeleton(

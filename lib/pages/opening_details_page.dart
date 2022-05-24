@@ -30,10 +30,6 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
       _chessEntitySet = ChessEntitySet(
           ChessBoard(
             size: MediaQuery.of(context).size.width - 16,
-            onMove: (move) {},
-            onCheckMate: (winnerColor) {},
-            onDraw: () {},
-            chessBoardController: chessBoardController,
             enableUserMoves: true,
           ),
           chessBoardController);
