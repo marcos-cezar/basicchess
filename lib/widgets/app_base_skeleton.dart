@@ -14,19 +14,19 @@ class AppBaseSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
             color: Colors.white
         ),
         title: Text(
-          this.title,
+          title,
           style: GoogleFonts.playfairDisplay(
               fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
         ),
       ),
       body: SafeArea(
-        child: this.child,
+        child: child,
       ),
-      backgroundColor: this.backgroundColor,
+      backgroundColor: backgroundColor,
     );
   }
 }

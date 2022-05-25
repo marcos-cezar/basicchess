@@ -11,6 +11,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../main.dart';
 
 class MainChessApp extends StatefulWidget {
+  const MainChessApp({Key key}) : super(key: key);
+
   @override
   _MainChessAppState createState() => _MainChessAppState();
 }
@@ -29,13 +31,15 @@ class _MainChessAppState extends State<MainChessApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               MenuList(menuItems: [
-                ChessMenuItem("Regras iniciais", "Aprenda o básico sobre o jogo",
+                ChessMenuItem(
+                    "Regras iniciais",
+                    "Aprenda o básico sobre o jogo",
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
                       context, BasicRulesPage.PIECES_PAGE_ROUTE_NAME);
                 }),
                 ChessMenuItem("Aberturas", "Memorize as aberturas mais famosas",
-                    FontAwesomeIcons.bookReader, () {
+                    FontAwesomeIcons.bookAtlas, () {
                   Navigator.pushNamed(
                       context, OpeningsPage.OPENING_PAGE_ROUTE_NAME);
                 }),
@@ -55,7 +59,7 @@ class GameInheritedWidget extends InheritedWidget {
   final AppStateContainer appStateContainer;
   final ChessGameBloc gameBloc;
 
-  GameInheritedWidget(this.appStateContainer, this.gameBloc,
+  const GameInheritedWidget(this.appStateContainer, this.gameBloc,
       {Key key, @required Widget child})
       : super(key: key, child: child);
 

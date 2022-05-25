@@ -18,7 +18,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
 
   ChessEntitySet chessEntitySet;
 
-  final Map<String, ChessEntitySet> openingEntries = Map<String, ChessEntitySet>();
+  final Map<String, ChessEntitySet> openingEntries = <String, ChessEntitySet>{};
   ChessGameBloc chessGameBloc;
 
   void createOpeningChessBoards() {
@@ -26,7 +26,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
       ChessBoardController chessBoardController = ChessBoardController();
       ChessBoard currentChessBoard = ChessBoard(
           size: 120,
-          enableUserMoves: false);
+          enableUserMoves: false, controller: chessBoardController,);
 
       openingEntries.putIfAbsent(key, () {
         return ChessEntitySet(currentChessBoard, chessBoardController);
@@ -66,7 +66,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
             },
             child: Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   children: <Widget>[
                     SizedBox(
@@ -77,7 +77,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
                         child: value.chessboard,
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10),
                     ),
                     Text(key)

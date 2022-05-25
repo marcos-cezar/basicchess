@@ -9,14 +9,14 @@ class MainMenuItem extends StatelessWidget {
 
   final Function _onClickCallback;
 
-  MainMenuItem(this._icon, this._itemLabel, this._itemDescription,
+  const MainMenuItem(this._icon, this._itemLabel, this._itemDescription,
       this._onClickCallback);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-          side: BorderSide(
+          side: const BorderSide(
             color: Colors.white70,
           ),
           borderRadius: BorderRadius.circular(10)),
@@ -25,25 +25,23 @@ class MainMenuItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: ListTile(
-              trailing: Icon(Icons.arrow_forward_ios),
-              leading: Container(
-                child: SizedBox(child: _icon),
-              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              leading: SizedBox(child: _icon),
               title: Text(
                 _itemLabel,
                 style: GoogleFonts.playfairDisplay(
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold,
-                    textStyle: TextStyle(fontSize: 14)),
+                    textStyle: const TextStyle(fontSize: 14)),
               ),
               onTap: _onClickCallback,
               subtitle: Text(
                 _itemDescription,
                 style: GoogleFonts.playfairDisplay(
                     fontStyle: FontStyle.normal,
-                    textStyle: TextStyle(fontSize: 12)),
+                    textStyle: const TextStyle(fontSize: 12)),
               ),
             ),
           ),

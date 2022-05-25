@@ -18,12 +18,12 @@ void main() {
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.lightGreen[400],
-          primaryColorLight: Colors.lightGreen[200],
-          primaryColorDark: Colors.lightGreen[800],
+          primaryColor: Colors.lightGreen,
+          primaryColorLight: Colors.lightGreen,
+          primaryColorDark: Colors.lightGreen,
           fontFamily: GoogleFonts.playfairDisplay(fontStyle: FontStyle.normal)
               .fontFamily,
-          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white))),
+          primaryTextTheme: const TextTheme(headline6: TextStyle(color: Colors.white))),
       initialRoute: "/",
       routes: {
         "/": (context) => AppStateContainer(
@@ -70,7 +70,7 @@ class AppStateContainer extends StatefulWidget {
   final Widget child;
   final ChessGameBloc chessBloc;
 
-  AppStateContainer({this.child, this.chessBloc});
+  const AppStateContainer({this.child, this.chessBloc});
 
   @override
   _AppContainerState createState() => _AppContainerState();
@@ -84,8 +84,8 @@ class _AppContainerState extends State<AppStateContainer> {
   @override
   Widget build(BuildContext context) {
     return GameInheritedWidget(
-      this.widget,
-      this.widget.chessBloc,
+      widget,
+      widget.chessBloc,
       child: widget.child,
     );
   }
@@ -93,6 +93,6 @@ class _AppContainerState extends State<AppStateContainer> {
   @override
   void dispose() {
     super.dispose();
-    this.widget.chessBloc.destroy();
+    widget.chessBloc.destroy();
   }
 }

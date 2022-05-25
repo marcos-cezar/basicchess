@@ -1,15 +1,16 @@
 import 'package:chessmindexpander/bloc/chess_bloc.dart';
 import 'package:chessmindexpander/main.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:developer' as developer;
 
 // ignore: must_be_immutable
 class StudiesPage extends StatefulWidget {
   static const STUDIES_PAGE_ROUTE_NAME = "/studies";
+
+  const StudiesPage({Key key}) : super(key: key);
 
   @override
   _StudiesPageState createState() => _StudiesPageState();
@@ -32,7 +33,7 @@ class _StudiesPageState extends State<StudiesPage> {
             SizedBox(
               child: _buildChessBoard(),
             ),
-            Text("PGN"),
+            const Text("PGN"),
             Row(
               children: <Widget>[
                 Expanded(
@@ -44,16 +45,16 @@ class _StudiesPageState extends State<StudiesPage> {
                       builder: (context, snapshot) {
                         return Card(
                           shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.grey),
+                              side: const BorderSide(color: Colors.grey),
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
-                            padding: EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15),
                             child: Text(
                               "${snapshot.data}",
                               style: GoogleFonts.playfairDisplay(
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.bold,
-                                  textStyle: TextStyle(fontSize: 14)),
+                                  textStyle: const TextStyle(fontSize: 14)),
                             ),
                           ),
                         );
@@ -69,10 +70,10 @@ class _StudiesPageState extends State<StudiesPage> {
                 Column(
                   children: <Widget>[
                     BoardControlButton(
-                      icon: Icon(Icons.forward),
+                      icon: const Icon(Icons.forward),
                       transformation: Transform.rotate(
                         angle: 180 * 3.14 / 180,
-                        child: Icon(Icons.forward),
+                        child: const Icon(Icons.forward),
                       ),
                       buttonAction: () {
                         if (gameBloc.currentTurn > -1) {
@@ -83,21 +84,19 @@ class _StudiesPageState extends State<StudiesPage> {
                         }
                       },
                     ),
-
                     Text(
                       "Voltar",
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,
-                          textStyle: TextStyle(fontSize: 14)),
+                          textStyle: const TextStyle(fontSize: 14)),
                     )
-
                   ],
                 ),
                 Column(
                   children: <Widget>[
                     BoardControlButton(
-                      icon: Icon(Icons.autorenew),
+                      icon: const Icon(Icons.autorenew),
                       buttonAction: () {
                         gameBloc.currentTurn = 0;
                         gameBloc.moves.clear();
@@ -111,7 +110,7 @@ class _StudiesPageState extends State<StudiesPage> {
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,
-                          textStyle: TextStyle(fontSize: 14)),
+                          textStyle: const TextStyle(fontSize: 14)),
                     )
                   ],
                 ),
@@ -129,7 +128,7 @@ class _StudiesPageState extends State<StudiesPage> {
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,
-                          textStyle: TextStyle(fontSize: 14)),
+                          textStyle: const TextStyle(fontSize: 14)),
                     ),
                   ],
                 )
@@ -143,12 +142,13 @@ class _StudiesPageState extends State<StudiesPage> {
 
   Widget _buildChessBoard() {
     return ChessBoard(
+      controller: _chessBoardController,
       size: MediaQuery.of(context).size.width,
       onMove: () {
-        //gameBloc.moves.add(move);
+        //gameBloc.moves.add(_chessBoardController.);
         gameBloc.currentTurn = gameBloc.moves.length - 1;
         gameBloc.updateCurrentGame(_chessBoardController.game.pgn({}));
-        print(gameBloc.currentTurn);
+        developer.log(gameBloc.currentTurn.toString());
       },
       enableUserMoves: true,
     );
@@ -163,16 +163,23 @@ class BoardControlButton extends StatelessWidget {
   final Widget transformation;
   final Function buttonAction;
 
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-        padding: EdgeInsets.all(10),
-        child: transformation ?? icon,
+  /*
+  * padding: EdgeInsets.all(10),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
             side: BorderSide(color: Colors.indigo)),
         textColor: Colors.white,
-        color: Colors.indigo,
-        onPressed: buttonAction);
+        color: Colors.indigo,*/
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(10),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: const BorderSide(color: Colors.indigo)),
+            textStyle: const TextStyle(color: Colors.white)),
+        onPressed: buttonAction,
+        child: transformation ?? icon);
   }
 }

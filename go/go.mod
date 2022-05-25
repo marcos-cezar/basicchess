@@ -1,6 +1,6 @@
 module chessmindexpander/go
 
-go 1.17
+go 1.18
 
 require (
 	github.com/go-flutter-desktop/go-flutter v0.44.0
