@@ -31,7 +31,7 @@ class _StudiesPageState extends State<StudiesPage> {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              child: _buildChessBoard(),
+              child: _buildChessBoard(_chessBoardController, isToFlipBoard),
             ),
             const Text("PGN"),
             Row(
@@ -49,12 +49,17 @@ class _StudiesPageState extends State<StudiesPage> {
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(15),
-                            child: Text(
-                              "${snapshot.data}",
-                              style: GoogleFonts.playfairDisplay(
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.bold,
-                                  textStyle: const TextStyle(fontSize: 14)),
+                            child: ValueListenableBuilder<Chess>(
+                              valueListenable: _chessBoardController,
+                              builder: (context, game, _) {
+                                return Text(
+                                  "${game.san_moves()}",
+                                  style: GoogleFonts.playfairDisplay(
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.bold,
+                                      textStyle: const TextStyle(fontSize: 14)),
+                                );
+                              },
                             ),
                           ),
                         );
@@ -119,8 +124,9 @@ class _StudiesPageState extends State<StudiesPage> {
                     Switch(
                       value: !isToFlipBoard,
                       onChanged: (value) {
-                        isToFlipBoard = !value;
-                        setState(() {});
+                        setState(() {
+                          isToFlipBoard = !value;
+                        });
                       },
                     ),
                     Text(
@@ -140,16 +146,17 @@ class _StudiesPageState extends State<StudiesPage> {
     );
   }
 
-  Widget _buildChessBoard() {
+  Widget _buildChessBoard(ChessBoardController chessBoardController,
+      bool flippedBoard) {
     return ChessBoard(
-      controller: _chessBoardController,
-      size: MediaQuery.of(context).size.width,
+      controller: chessBoardController,
       onMove: () {
-        //gameBloc.moves.add(_chessBoardController.);
+        gameBloc.moves.add(_chessBoardController.getSan().last);
         gameBloc.currentTurn = gameBloc.moves.length - 1;
         gameBloc.updateCurrentGame(_chessBoardController.game.pgn({}));
         developer.log(gameBloc.currentTurn.toString());
       },
+      boardOrientation: flippedBoard ? PlayerColor.black : PlayerColor.white,
       enableUserMoves: true,
     );
   }
@@ -157,19 +164,13 @@ class _StudiesPageState extends State<StudiesPage> {
 
 class BoardControlButton extends StatelessWidget {
   const BoardControlButton(
-      {Key key, this.icon, this.buttonAction, this.transformation});
+      {Key key, this.icon, this.buttonAction, this.transformation})
+      : super(key: key);
 
   final Widget icon;
   final Widget transformation;
   final Function buttonAction;
 
-  /*
-  * padding: EdgeInsets.all(10),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.indigo)),
-        textColor: Colors.white,
-        color: Colors.indigo,*/
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
