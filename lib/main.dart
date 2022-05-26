@@ -56,7 +56,7 @@ void main() {
               chessBloc: ChessGameBloc(),
               child: PieceDetailPage(),
             ),
-        OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME: (context) =>
+        OpeningDetailsPage.openingDetailPageRouteName: (context) =>
             AppStateContainer(
               chessBloc: ChessGameBloc(),
               child: OpeningDetailsPage(),

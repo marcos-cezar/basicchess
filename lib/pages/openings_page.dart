@@ -58,7 +58,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed(
-                  OpeningDetailsPage.OPENING_DETAIL_PAGE_ROUTE_NAME,
+                  OpeningDetailsPage.openingDetailPageRouteName,
                   arguments: OpeningArguments.name(
                       key,
                       chessGameBloc.chessOpenings[key].startPgnPos,

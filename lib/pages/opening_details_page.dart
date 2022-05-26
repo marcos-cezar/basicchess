@@ -12,24 +12,26 @@ class OpeningArguments {
 }
 
 class OpeningDetailsPage extends StatefulWidget {
-  static const OPENING_DETAIL_PAGE_ROUTE_NAME = "/openingDetails";
+  static const openingDetailPageRouteName = "/openingDetails";
 
   @override
-  _OpeningDetailsPageState createState() => _OpeningDetailsPageState();
+  OpeningDetailsPageState createState() => OpeningDetailsPageState();
 }
 
-class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
+class OpeningDetailsPageState extends State<OpeningDetailsPage> {
+
   OpeningArguments _openingArguments;
   ChessEntitySet _chessEntitySet;
 
 
   @override
   void didChangeDependencies() {
+    super.didChangeDependencies();
     if (_chessEntitySet == null) {
       ChessBoardController chessBoardController = ChessBoardController();
       _chessEntitySet = ChessEntitySet(
           ChessBoard(
-            size: MediaQuery.of(context).size.width - 16,
+            controller: chessBoardController,
             enableUserMoves: true,
           ),
           chessBoardController);
@@ -48,7 +50,7 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
     return AppBaseSkeleton(
       title: _openingArguments.name,
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
             SizedBox(
@@ -57,15 +59,15 @@ class _OpeningDetailsPageState extends State<OpeningDetailsPage> {
                 child: _chessEntitySet.chessboard,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(color: Colors.blueGrey)),
+                  side: const BorderSide(color: Colors.blueGrey)),
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Text(
                   _openingArguments.description,
                   textAlign: TextAlign.justify,
