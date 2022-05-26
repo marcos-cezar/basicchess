@@ -28,9 +28,9 @@ void main() {
       routes: {
         "/": (context) => AppStateContainer(
               chessBloc: ChessGameBloc(),
-              child: MainChessApp(),
+              child: const MainChessApp(),
             ),
-        BasicRulesPage.PIECES_PAGE_ROUTE_NAME: (context) => AppStateContainer(
+        BasicRulesPage.piecesPageRouteName: (context) => AppStateContainer(
               chessBloc: ChessGameBloc(),
               child: BasicRulesPage(),
             ),
@@ -40,18 +40,18 @@ void main() {
             ),
         StudiesPage.STUDIES_PAGE_ROUTE_NAME: (context) => AppStateContainer(
               chessBloc: ChessGameBloc(),
-              child: StudiesPage(),
+              child: const StudiesPage(),
             ),
-        BoardDetailPage.BOARD_PAGE_ROUTE_NAME: (context) => AppStateContainer(
+        BoardDetailPage.boardPageRouteName: (context) => AppStateContainer(
               chessBloc: ChessGameBloc(),
               child: BoardDetailPage(),
             ),
-        InitialPositionPage.INITIAL_POSITION_PAGE_ROUTE_NAME: (context) =>
+        InitialPositionPage.initialPositionPageRouteName: (context) =>
             AppStateContainer(
               chessBloc: ChessGameBloc(),
-              child: InitialPositionPage(),
+              child: const InitialPositionPage(),
             ),
-        PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME: (context) =>
+        PieceDetailPage.pieceDetailPageRouteName: (context) =>
             AppStateContainer(
               chessBloc: ChessGameBloc(),
               child: PieceDetailPage(),

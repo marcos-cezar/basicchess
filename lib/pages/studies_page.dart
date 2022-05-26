@@ -18,7 +18,7 @@ class StudiesPage extends StatefulWidget {
 
 class _StudiesPageState extends State<StudiesPage> {
   final ChessBoardController _chessBoardController = ChessBoardController();
-  bool isToFlipBoard = true;
+  bool isToFlipBoard = false;
   ChessGameBloc gameBloc;
 
   @override
@@ -122,10 +122,10 @@ class _StudiesPageState extends State<StudiesPage> {
                 Column(
                   children: <Widget>[
                     Switch(
-                      value: !isToFlipBoard,
+                      value: isToFlipBoard,
                       onChanged: (value) {
                         setState(() {
-                          isToFlipBoard = !value;
+                          isToFlipBoard = value;
                         });
                       },
                     ),

@@ -36,7 +36,7 @@ class _MainChessAppState extends State<MainChessApp> {
                     "Aprenda o básico sobre o jogo",
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
-                      context, BasicRulesPage.PIECES_PAGE_ROUTE_NAME);
+                      context, BasicRulesPage.piecesPageRouteName);
                 }),
                 ChessMenuItem("Aberturas", "Memorize as aberturas mais famosas",
                     FontAwesomeIcons.bookAtlas, () {

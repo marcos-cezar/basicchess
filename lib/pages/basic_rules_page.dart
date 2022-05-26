@@ -12,7 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'initial_position_page.dart';
 
 class BasicRulesPage extends StatelessWidget {
-  static const String PIECES_PAGE_ROUTE_NAME = "/basicRules";
+  static const String piecesPageRouteName = "/basicRules";
 
   ChessDescriptions chessDescriptions = ChessDescriptions();
 
@@ -30,25 +30,25 @@ class BasicRulesPage extends StatelessWidget {
                     "Conheça o cenário onde a partida acontece. $knownMore",
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
-                      context, BoardDetailPage.BOARD_PAGE_ROUTE_NAME);
+                      context, BoardDetailPage.boardPageRouteName);
                 }),
                 ChessMenuItem(
                     "Posição inicial",
                     "Aprenda qual a disposição inicial das peças. $knownMore",
                     FontAwesomeIcons.chess, () {
                   Navigator.pushNamed(context,
-                      InitialPositionPage.INITIAL_POSITION_PAGE_ROUTE_NAME);
+                      InitialPositionPage.initialPositionPageRouteName);
                 }),
                 ChessMenuItem("Bispo", "Bispo move-se para as diagonais. $knownMore",
                     FontAwesomeIcons.chessBishop, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Bispo",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.BISHOP.toString()],
                           startSinglePiecePos: "e4",
-                          pieceType: PieceType.BISHOP,
+                          pieceType: BoardPieceType.Bishop,
                           pieceIcon: WhiteBishop(
                             size: 48,
                           )));
@@ -58,13 +58,13 @@ class BasicRulesPage extends StatelessWidget {
                     "Torre move-se horizontalmente ou verticalmente. $knownMore",
                     FontAwesomeIcons.chessRook, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Torre",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.ROOK.toString()],
                           startSinglePiecePos: "e4",
-                          pieceType: PieceType.ROOK,
+                          pieceType: BoardPieceType.Rook,
                           pieceIcon: WhiteRook(
                             size: 48,
                           )));
@@ -74,13 +74,13 @@ class BasicRulesPage extends StatelessWidget {
                     "A dama move-se como a torre e o bispo. $knownMore",
                     FontAwesomeIcons.chessQueen, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Dama",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.QUEEN.toString()],
                           startSinglePiecePos: "e4",
-                          pieceType: PieceType.QUEEN,
+                          pieceType: BoardPieceType.Queen,
                           pieceIcon: WhiteQueen(
                             size: 48,
                           )));
@@ -90,13 +90,13 @@ class BasicRulesPage extends StatelessWidget {
                     "O rei move-se como a dama só que apenas uma casa. $knownMore",
                     FontAwesomeIcons.chessKing, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Rei",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.KING.toString()],
                           startSinglePiecePos: "e4",
-                          pieceType: PieceType.KING,
+                          pieceType: BoardPieceType.King,
                           pieceIcon: WhiteKing(
                             size: 48,
                           )));
@@ -104,13 +104,13 @@ class BasicRulesPage extends StatelessWidget {
                 ChessMenuItem("Peão", "Peão move-se para frente. $knownMore",
                     FontAwesomeIcons.chessPawn, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Peão",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.PAWN.toString()],
                           startSinglePiecePos: "e2",
-                          pieceType: PieceType.PAWN,
+                          pieceType: BoardPieceType.Pawn,
                           pieceIcon: WhitePawn(
                             size: 48,
                           )));
@@ -118,13 +118,13 @@ class BasicRulesPage extends StatelessWidget {
                 ChessMenuItem("Cavalo", "Cavalo move-se em formato de L. $knownMore",
                     FontAwesomeIcons.chessKnight, () {
                   Navigator.pushNamed(
-                      context, PieceDetailPage.PIECE_DETAIL_PAGE_ROUTE_NAME,
+                      context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
                           name: "Cavalo",
                           description: chessDescriptions
                               .pieceDescriptions[PieceType.KNIGHT.toString()],
                           startSinglePiecePos: "e4",
-                          pieceType: PieceType.KNIGHT,
+                          pieceType: BoardPieceType.Knight,
                           pieceIcon: WhiteKnight(
                             size: 48,
                           )));
