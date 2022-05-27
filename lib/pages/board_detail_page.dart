@@ -8,7 +8,7 @@ class BoardDetailPage extends StatelessWidget {
 
   BoardDetailPage({Key key}) : super(key: key);
 
-  ChessBoardController _chessBoardController = ChessBoardController();
+  final ChessBoardController _chessBoardController = ChessBoardController();
 
   @override
   Widget build(BuildContext context) {

@@ -18,12 +18,12 @@ void main() {
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.lightGreen,
+          primarySwatch: Colors.lightGreen,
           primaryColorLight: Colors.lightGreen,
           primaryColorDark: Colors.lightGreen,
           fontFamily: GoogleFonts.playfairDisplay(fontStyle: FontStyle.normal)
               .fontFamily,
-          primaryTextTheme: const TextTheme(headline6: TextStyle(color: Colors.white))),
+          textTheme: const TextTheme(headline6: TextStyle(color: Colors.white))),
       initialRoute: "/",
       routes: {
         "/": (context) => AppStateContainer(
