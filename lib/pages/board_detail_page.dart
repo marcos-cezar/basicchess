@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class BoardDetailPage extends StatelessWidget {
   static const boardPageRouteName = "/boardInfo";
 
@@ -17,25 +19,25 @@ class BoardDetailPage extends StatelessWidget {
     _chessBoardController.clearBoard();
 
     return AppBaseSkeleton(
-      title: "Tabuleiro",
+      title: AppLocalizations.of(context).board_title,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
-            const Text(
-              "O campo de batalha se divide em um quadrado dividido em 64 casas, pintadas alternadamente entre escuras e claras. Assim como o diagrama abaixo.",
+            Text(
+              AppLocalizations.of(context).board_description,
               textAlign: TextAlign.justify,
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
             Expanded(
                 child: ChessBoard(
                   enableUserMoves: false,
                   controller: _chessBoardController,
                 )),
-            const Text(
-              "A posição correta do tabuleiro é aquela onde os jogadores tenham a sua direita o último quadrado branco.",
+            Text(
+              AppLocalizations.of(context).board_tip,
               textAlign: TextAlign.justify,
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
           ],
         ),

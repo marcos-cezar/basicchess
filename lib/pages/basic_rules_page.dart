@@ -2,51 +2,56 @@ import 'package:chess_vectors_flutter/chess_vectors_flutter.dart';
 import 'package:chessmindexpander/models/chess_menu_item.dart';
 import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/pages/piece_detail_page.dart';
-import 'package:chessmindexpander/utils/chess_descriptions.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:chessmindexpander/widgets/menu_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'initial_position_page.dart';
 
 class BasicRulesPage extends StatelessWidget {
   static const String piecesPageRouteName = "/basicRules";
 
-  ChessDescriptions chessDescriptions = ChessDescriptions();
-
   @override
   Widget build(BuildContext context) {
-    String knownMore = "Clique para saber mais";
+    String knownMore = AppLocalizations.of(context).click_to_know_more_label;
     return AppBaseSkeleton(
-        title: "Regras iniciais",
+        title: AppLocalizations.of(context).initial_rules,
         child: Column(
           children: <Widget>[
             MenuList(
               menuItems: [
                 ChessMenuItem(
-                    "Tabuleiro",
-                    "Conheça o cenário onde a partida acontece. $knownMore",
+                    AppLocalizations.of(context).board_title,
+                    AppLocalizations.of(context).board_menu_description +
+                        knownMore,
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
                       context, BoardDetailPage.boardPageRouteName);
                 }),
                 ChessMenuItem(
-                    "Posição inicial",
-                    "Aprenda qual a disposição inicial das peças. $knownMore",
+                    AppLocalizations.of(context).start_position_title,
+                    AppLocalizations.of(context)
+                            .start_menu_position_description +
+                        knownMore,
                     FontAwesomeIcons.chess, () {
                   Navigator.pushNamed(context,
                       InitialPositionPage.initialPositionPageRouteName);
                 }),
-                ChessMenuItem("Bispo", "Bispo move-se para as diagonais. $knownMore",
+                ChessMenuItem(
+                    AppLocalizations.of(context).bishop_label,
+                    AppLocalizations.of(context).bishop_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessBishop, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Bispo",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.BISHOP.toString()],
+                          name: AppLocalizations.of(context).bishop_label,
+                          description: AppLocalizations.of(context)
+                              .bishop_move_big_description,
                           startSinglePiecePos: "e4",
                           pieceType: BoardPieceType.Bishop,
                           pieceIcon: WhiteBishop(
@@ -54,15 +59,16 @@ class BasicRulesPage extends StatelessWidget {
                           )));
                 }),
                 ChessMenuItem(
-                    "Torre",
-                    "Torre move-se horizontalmente ou verticalmente. $knownMore",
+                    AppLocalizations.of(context).rook_label,
+                    AppLocalizations.of(context).rook_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessRook, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Torre",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.ROOK.toString()],
+                          name: AppLocalizations.of(context).rook_label,
+                          description: AppLocalizations.of(context)
+                              .rook_move_big_description,
                           startSinglePiecePos: "e4",
                           pieceType: BoardPieceType.Rook,
                           pieceIcon: WhiteRook(
@@ -70,15 +76,16 @@ class BasicRulesPage extends StatelessWidget {
                           )));
                 }),
                 ChessMenuItem(
-                    "Dama",
-                    "A dama move-se como a torre e o bispo. $knownMore",
+                    AppLocalizations.of(context).queen_label,
+                    AppLocalizations.of(context).queen_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessQueen, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Dama",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.QUEEN.toString()],
+                          name: AppLocalizations.of(context).queen_label,
+                          description: AppLocalizations.of(context)
+                              .queen_move_big_description,
                           startSinglePiecePos: "e4",
                           pieceType: BoardPieceType.Queen,
                           pieceIcon: WhiteQueen(
@@ -86,43 +93,50 @@ class BasicRulesPage extends StatelessWidget {
                           )));
                 }),
                 ChessMenuItem(
-                    "Rei",
-                    "O rei move-se como a dama só que apenas uma casa. $knownMore",
+                    AppLocalizations.of(context).king_label,
+                    AppLocalizations.of(context).king_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessKing, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Rei",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.KING.toString()],
+                          name: AppLocalizations.of(context).king_label,
+                          description: AppLocalizations.of(context)
+                              .king_move_big_description,
                           startSinglePiecePos: "e4",
                           pieceType: BoardPieceType.King,
                           pieceIcon: WhiteKing(
                             size: 48,
                           )));
                 }),
-                ChessMenuItem("Peão", "Peão move-se para frente. $knownMore",
+                ChessMenuItem(
+                    AppLocalizations.of(context).pawn_label,
+                    AppLocalizations.of(context).pawn_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessPawn, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Peão",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.PAWN.toString()],
+                          name: AppLocalizations.of(context).pawn_label,
+                          description: AppLocalizations.of(context)
+                              .pawn_move_big_description,
                           startSinglePiecePos: "e2",
                           pieceType: BoardPieceType.Pawn,
                           pieceIcon: WhitePawn(
                             size: 48,
                           )));
                 }),
-                ChessMenuItem("Cavalo", "Cavalo move-se em formato de L. $knownMore",
+                ChessMenuItem(
+                    AppLocalizations.of(context).knight_label,
+                    AppLocalizations.of(context).knight_move_short_description +
+                        knownMore,
                     FontAwesomeIcons.chessKnight, () {
                   Navigator.pushNamed(
                       context, PieceDetailPage.pieceDetailPageRouteName,
                       arguments: PieceDetailArguments(
-                          name: "Cavalo",
-                          description: chessDescriptions
-                              .pieceDescriptions[PieceType.KNIGHT.toString()],
+                          name: AppLocalizations.of(context).knight_label,
+                          description: AppLocalizations.of(context)
+                              .knight_move_big_description,
                           startSinglePiecePos: "e4",
                           pieceType: BoardPieceType.Knight,
                           pieceIcon: WhiteKnight(

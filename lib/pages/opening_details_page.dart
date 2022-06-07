@@ -3,6 +3,8 @@ import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class OpeningArguments {
   String name;
   String startPgnPos;
@@ -19,10 +21,8 @@ class OpeningDetailsPage extends StatefulWidget {
 }
 
 class OpeningDetailsPageState extends State<OpeningDetailsPage> {
-
   OpeningArguments _openingArguments;
   ChessEntitySet _chessEntitySet;
-
 
   @override
   void didChangeDependencies() {
@@ -69,7 +69,7 @@ class OpeningDetailsPageState extends State<OpeningDetailsPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  _openingArguments.description,
+                  "${_openingArguments.description}\n\n${AppLocalizations.of(context).ruy_lopez_opening_description}",
                   textAlign: TextAlign.justify,
                 ),
               ),

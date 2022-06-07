@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
 import 'opening_details_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OpeningsPage extends StatefulWidget {
   static const OPENING_PAGE_ROUTE_NAME = "/openings";
@@ -50,10 +51,27 @@ class _OpeningsPageState extends State<OpeningsPage> {
       });
     });
 
+    String _resolveOpeningDeepDescription(String key) {
+      switch (key) {
+        case ChessGameBloc.RUY_LOPEZ_OPENING_NAME:
+          return AppLocalizations.of(context).ruy_lopez_opening_description;
+          break;
+        case ChessGameBloc.QUEENS_GAMBIT_DEFENSE_NAME:
+          break;
+        case ChessGameBloc.SICILIAN_DEFENSE_NAME:
+          return AppLocalizations.of(context).sicilian_opening_description;
+          break;
+        case ChessGameBloc.SLAVE_DEFENSE_NAME:
+          break;
+      }
+    }
+
     List<Widget> createOpeningItems() {
       final List<Widget> resultOpenings = [];
 
       openingEntries.forEach((key, value) {
+        String resolveOpeningDesc = _resolveOpeningDeepDescription(key);
+
         final Widget currentCardItem = SizedBox(
           child: GestureDetector(
             onTap: () {
@@ -62,7 +80,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
                   arguments: OpeningArguments.name(
                       key,
                       chessGameBloc.chessOpenings[key].startPgnPos,
-                      chessGameBloc.chessOpenings[key].description));
+                      "${chessGameBloc.chessOpenings[key].description}\n\n$resolveOpeningDesc}"));
             },
             child: Card(
               child: Padding(
@@ -93,8 +111,10 @@ class _OpeningsPageState extends State<OpeningsPage> {
       return resultOpenings;
     }
 
+
+
     return AppBaseSkeleton(
-      title: "Aberturas",
+      title: AppLocalizations.of(context).openings_title,
       child: ListView(
         children: createOpeningItems(),
       ),

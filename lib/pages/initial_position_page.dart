@@ -2,6 +2,7 @@ import 'package:chessmindexpander/models/chess_entity_set.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InitialPositionPage extends StatefulWidget {
   static const initialPositionPageRouteName = "/initialPosition";
@@ -32,8 +33,12 @@ class InitialPositionPageState extends State<InitialPositionPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    AppLocalizations appLocalization = AppLocalizations.of(context);
+    String positionDescription = appLocalization.start_position_description;
+
     return AppBaseSkeleton(
-      title: "Posição inicial",
+      title: appLocalization.start_position_title,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: SingleChildScrollView(
@@ -47,11 +52,10 @@ class InitialPositionPageState extends State<InitialPositionPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                     side: const BorderSide(color: Colors.blueGrey)),
-                child: const Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text(
-                    "Ao se iniciar uma partida as peças devem ocupar a posição abaixo. As 16 peças ocupam de cada lado as primeiras linhas horizontais de cada lado. Os peões ocupam a segunda horizontal, as torres nos cantos, os cavalos junto às torres e os Bispos juntos aos cavalos. A dama branca ocupa a casa branca, a dama preta a casa preta. Os reis situam-se ao lado das respectivas damas.",
-                    style: TextStyle(fontSize: 14),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(positionDescription,
+                    style: const TextStyle(fontSize: 14),
                     textAlign: TextAlign.justify,
                   ),
                 ),
