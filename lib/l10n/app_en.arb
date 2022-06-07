@@ -1,0 +1,9 @@
+{
+    "apptitle": "Basic Chess",
+    "start_rules" : "Basic rules",
+    "start_rules_description": "Learn the basic rules of the game",
+    "openings_title": "Openings",
+    "openings_description": "Memorize the most famous openings",
+    "studies_title": "Studies",
+    "studies_description": "Study one of your matches or one famous match of a grand master"
+}

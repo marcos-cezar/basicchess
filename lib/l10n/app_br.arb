@@ -1,0 +1,9 @@
+{
+    "apptitle": "Xadrez Básico",
+    "start_rules" : "Regras básicas",
+    "start_rules_description": "Aprenda o básico sobre o jogo",
+    "openings_title": "Aberturas",
+    "openings_description": "Memorize as aberturas mais famosas",
+    "studies_title": "Estudos",
+    "studies_description": "Estude uma de suas partidas ou uma partida famosa de um grande mestre"
+}

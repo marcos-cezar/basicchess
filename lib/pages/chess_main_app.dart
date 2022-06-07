@@ -7,6 +7,7 @@ import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
 import 'package:chessmindexpander/widgets/menu_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../main.dart';
 
@@ -24,7 +25,7 @@ class _MainChessAppState extends State<MainChessApp> {
   Widget build(BuildContext context) {
     holder = AppStateContainer.of(context);
     return AppBaseSkeleton(
-        title: "Xadrez Facilitado",
+        title: AppLocalizations.of(context).apptitle,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -32,18 +33,22 @@ class _MainChessAppState extends State<MainChessApp> {
             children: <Widget>[
               MenuList(menuItems: [
                 ChessMenuItem(
-                    "Regras iniciais",
-                    "Aprenda o básico sobre o jogo",
+                    AppLocalizations.of(context).start_rules,
+                    AppLocalizations.of(context).start_rules_description,
                     FontAwesomeIcons.chessBoard, () {
                   Navigator.pushNamed(
                       context, BasicRulesPage.piecesPageRouteName);
                 }),
-                ChessMenuItem("Aberturas", "Memorize as aberturas mais famosas",
+                ChessMenuItem(
+                    AppLocalizations.of(context).openings_title,
+                    AppLocalizations.of(context).openings_description,
                     FontAwesomeIcons.bookAtlas, () {
                   Navigator.pushNamed(
                       context, OpeningsPage.OPENING_PAGE_ROUTE_NAME);
                 }),
-                ChessMenuItem("Estudos", "Estude uma partida ou uma posição",
+                ChessMenuItem(
+                    AppLocalizations.of(context).studies_title,
+                    AppLocalizations.of(context).studies_description,
                     FontAwesomeIcons.brain, () {
                   Navigator.pushNamed(
                       context, StudiesPage.STUDIES_PAGE_ROUTE_NAME);

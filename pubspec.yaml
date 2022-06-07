@@ -11,7 +11,7 @@ description: A chess puzzle solver app
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.0+3
+version: 1.1.1+4
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -22,12 +22,16 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.4
+  cupertino_icons: ^1.0.5
   font_awesome_flutter: ^10.1.0
   google_fonts: ^3.0.1
   flutter_chess_board: ^1.0.1
-  chess_vectors_flutter: ^1.0.12
-  path_provider: ^2.0.10
+  chess_vectors_flutter: ^1.0.16
+  path_provider: ^2.0.11
+
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -45,7 +49,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  generate: true
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
