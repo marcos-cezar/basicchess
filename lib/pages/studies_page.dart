@@ -77,10 +77,13 @@ class _StudiesPageState extends State<StudiesPage> {
                 Column(
                   children: <Widget>[
                     BoardControlButton(
-                      icon: const Icon(Icons.forward),
+                      icon: const Icon(Icons.forward, color: Colors.white),
                       transformation: Transform.rotate(
                         angle: 180 * 3.14 / 180,
-                        child: const Icon(Icons.forward),
+                        child: const Icon(
+                          Icons.forward,
+                          color: Colors.white,
+                        ),
                       ),
                       buttonAction: () {
                         if (gameBloc.currentTurn > -1) {
@@ -103,7 +106,10 @@ class _StudiesPageState extends State<StudiesPage> {
                 Column(
                   children: <Widget>[
                     BoardControlButton(
-                      icon: const Icon(Icons.autorenew),
+                      icon: const Icon(
+                        Icons.autorenew,
+                        color: Colors.white,
+                      ),
                       buttonAction: () {
                         gameBloc.currentTurn = 0;
                         gameBloc.moves.clear();
@@ -148,8 +154,8 @@ class _StudiesPageState extends State<StudiesPage> {
     );
   }
 
-  Widget _buildChessBoard(ChessBoardController chessBoardController,
-      bool flippedBoard) {
+  Widget _buildChessBoard(
+      ChessBoardController chessBoardController, bool flippedBoard) {
     return ChessBoard(
       controller: chessBoardController,
       onMove: () {

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chessmindexpander/bloc/chess_bloc.dart';
 import 'package:chessmindexpander/pages/board_detail_page.dart';
 import 'package:chessmindexpander/pages/chess_main_app.dart';
@@ -9,10 +11,12 @@ import 'package:chessmindexpander/pages/piece_detail_page.dart';
 import 'package:chessmindexpander/pages/studies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
+  print(Platform.localeName.split('_')[0]);
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -26,7 +30,8 @@ void main() {
           primaryColorDark: Colors.lightGreen,
           fontFamily: GoogleFonts.playfairDisplay(fontStyle: FontStyle.normal)
               .fontFamily,
-          textTheme: const TextTheme(headline6: TextStyle(color: Colors.white))),
+          textTheme:
+              const TextTheme(headline6: TextStyle(color: Colors.white))),
       initialRoute: "/",
       routes: {
         "/": (context) => AppStateContainer(
