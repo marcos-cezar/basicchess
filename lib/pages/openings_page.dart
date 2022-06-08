@@ -16,7 +16,6 @@ class OpeningsPage extends StatefulWidget {
 }
 
 class _OpeningsPageState extends State<OpeningsPage> {
-
   ChessEntitySet chessEntitySet;
 
   final Map<String, ChessEntitySet> openingEntries = <String, ChessEntitySet>{};
@@ -26,8 +25,10 @@ class _OpeningsPageState extends State<OpeningsPage> {
     chessGameBloc.chessOpenings.forEach((key, value) {
       ChessBoardController chessBoardController = ChessBoardController();
       ChessBoard currentChessBoard = ChessBoard(
-          size: 120,
-          enableUserMoves: false, controller: chessBoardController,);
+        size: 120,
+        enableUserMoves: false,
+        controller: chessBoardController,
+      );
 
       openingEntries.putIfAbsent(key, () {
         return ChessEntitySet(currentChessBoard, chessBoardController);
@@ -51,17 +52,27 @@ class _OpeningsPageState extends State<OpeningsPage> {
       });
     });
 
-    String _resolveOpeningDeepDescription(String key) {
+    OpeningDisplayData _resolveOpeningDeepDescription(String key) {
       switch (key) {
-        case ChessGameBloc.RUY_LOPEZ_OPENING_NAME:
-          return AppLocalizations.of(context).ruy_lopez_opening_description;
+        case ChessGameBloc.ruyLopezOpeningName:
+          return OpeningDisplayData(
+              AppLocalizations.of(context).ruy_lopez_opening,
+              AppLocalizations.of(context).ruy_lopez_opening_description);
           break;
-        case ChessGameBloc.QUEENS_GAMBIT_DEFENSE_NAME:
+        case ChessGameBloc.queensGambitDefenseName:
+          return OpeningDisplayData(
+              AppLocalizations.of(context).queens_gambit_opening_label,
+              AppLocalizations.of(context).queens_gambit_opening_description);
           break;
-        case ChessGameBloc.SICILIAN_DEFENSE_NAME:
-          return AppLocalizations.of(context).sicilian_opening_description;
+        case ChessGameBloc.sicilianDefenseName:
+          return OpeningDisplayData(
+              AppLocalizations.of(context).sicilian_defense_opening_label,
+              AppLocalizations.of(context).sicilian_opening_description);
           break;
-        case ChessGameBloc.SLAVE_DEFENSE_NAME:
+        case ChessGameBloc.slavDefenseName:
+          return OpeningDisplayData(
+              AppLocalizations.of(context).slav_defense_opening_label,
+              AppLocalizations.of(context).slav_defense_opening_description);
           break;
       }
     }
@@ -70,7 +81,8 @@ class _OpeningsPageState extends State<OpeningsPage> {
       final List<Widget> resultOpenings = [];
 
       openingEntries.forEach((key, value) {
-        String resolveOpeningDesc = _resolveOpeningDeepDescription(key);
+        OpeningDisplayData resolveOpeningDisplayData =
+            _resolveOpeningDeepDescription(key);
 
         final Widget currentCardItem = SizedBox(
           child: GestureDetector(
@@ -78,9 +90,9 @@ class _OpeningsPageState extends State<OpeningsPage> {
               Navigator.of(context).pushNamed(
                   OpeningDetailsPage.openingDetailPageRouteName,
                   arguments: OpeningArguments.name(
-                      key,
+                      resolveOpeningDisplayData.title,
                       chessGameBloc.chessOpenings[key].startPgnPos,
-                      "${chessGameBloc.chessOpenings[key].description}\n\n$resolveOpeningDesc}"));
+                      "${chessGameBloc.chessOpenings[key].description}\n\n${resolveOpeningDisplayData.description}"));
             },
             child: Card(
               child: Padding(
@@ -98,7 +110,7 @@ class _OpeningsPageState extends State<OpeningsPage> {
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
                     ),
-                    Text(key)
+                    Text(resolveOpeningDisplayData.title)
                   ],
                 ),
               ),
@@ -111,8 +123,6 @@ class _OpeningsPageState extends State<OpeningsPage> {
       return resultOpenings;
     }
 
-
-
     return AppBaseSkeleton(
       title: AppLocalizations.of(context).openings_title,
       child: ListView(
@@ -120,4 +130,11 @@ class _OpeningsPageState extends State<OpeningsPage> {
       ),
     );
   }
+}
+
+class OpeningDisplayData {
+  String title;
+  String description;
+
+  OpeningDisplayData(this.title, this.description);
 }

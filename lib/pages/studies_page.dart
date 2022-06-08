@@ -6,6 +6,8 @@ import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as developer;
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 // ignore: must_be_immutable
 class StudiesPage extends StatefulWidget {
   static const STUDIES_PAGE_ROUTE_NAME = "/studies";
@@ -25,7 +27,7 @@ class _StudiesPageState extends State<StudiesPage> {
   Widget build(BuildContext context) {
     gameBloc = AppStateContainer.of(context).gameBloc;
     return AppBaseSkeleton(
-      title: "Estudos",
+      title: AppLocalizations.of(context).studies_title,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -90,7 +92,7 @@ class _StudiesPageState extends State<StudiesPage> {
                       },
                     ),
                     Text(
-                      "Voltar",
+                      AppLocalizations.of(context).back_button_label,
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,
@@ -111,7 +113,7 @@ class _StudiesPageState extends State<StudiesPage> {
                       },
                     ),
                     Text(
-                      "Reiniciar",
+                      AppLocalizations.of(context).restart_button_label,
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,
@@ -130,7 +132,7 @@ class _StudiesPageState extends State<StudiesPage> {
                       },
                     ),
                     Text(
-                      "Virar tabuleiro",
+                      AppLocalizations.of(context).flip_board_label,
                       style: GoogleFonts.playfairDisplay(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold,

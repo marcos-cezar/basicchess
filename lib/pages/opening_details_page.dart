@@ -69,7 +69,7 @@ class OpeningDetailsPageState extends State<OpeningDetailsPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  "${_openingArguments.description}\n\n${AppLocalizations.of(context).ruy_lopez_opening_description}",
+                  _openingArguments.description,
                   textAlign: TextAlign.justify,
                 ),
               ),
