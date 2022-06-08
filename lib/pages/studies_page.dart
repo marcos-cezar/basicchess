@@ -1,6 +1,8 @@
 import 'package:chessmindexpander/bloc/chess_bloc.dart';
 import 'package:chessmindexpander/main.dart';
 import 'package:chessmindexpander/widgets/app_base_skeleton.dart';
+import 'package:flame_audio/audio_pool.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,13 +21,21 @@ class StudiesPage extends StatefulWidget {
 }
 
 class _StudiesPageState extends State<StudiesPage> {
+
   final ChessBoardController _chessBoardController = ChessBoardController();
   bool isToFlipBoard = false;
   ChessGameBloc gameBloc;
 
+  Uri chessMoveSoundFile;
+
+  void startAudioPool() async {
+    chessMoveSoundFile = await FlameAudio.audioCache.load("chess_move_wood_sound.mp3");
+  }
+
   @override
   Widget build(BuildContext context) {
     gameBloc = AppStateContainer.of(context).gameBloc;
+    startAudioPool();
     return AppBaseSkeleton(
       title: AppLocalizations.of(context).studies_title,
       child: Padding(
@@ -163,10 +173,16 @@ class _StudiesPageState extends State<StudiesPage> {
         gameBloc.currentTurn = gameBloc.moves.length - 1;
         gameBloc.updateCurrentGame(_chessBoardController.game.pgn({}));
         developer.log(gameBloc.currentTurn.toString());
+        FlameAudio.play("chess_move_wood_sound.ogg");
       },
       boardOrientation: flippedBoard ? PlayerColor.black : PlayerColor.white,
       enableUserMoves: true,
     );
+  }
+
+  @override
+  void dispose() {
+    FlameAudio.audioCache.clear(chessMoveSoundFile);
   }
 }
 
