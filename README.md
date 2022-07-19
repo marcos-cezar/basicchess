@@ -1,7 +1,3 @@
-# chessmindexpander
-
-A chess puzzle solver app
-
-## Getting Started
+## Basic Chess
 
 This is a little tool to study chess from beginner to intermediate.
